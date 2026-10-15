@@ -3,7 +3,7 @@ var $=function(s){return document.querySelector(s);},C=window.Calc,M=window.MENU
 var KEY='combinado.events.v1',LAST='combinado.last.v1',evs=load(),ev,openInc=null;
 function load(){try{return JSON.parse(localStorage.getItem(KEY))||[];}catch(e){return [];}}
 function save(){ev.date=new Date().toISOString();try{localStorage.setItem(KEY,JSON.stringify(evs));localStorage.setItem(LAST,ev.id);}catch(e){}}
-function h(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&','<':'<','>':'>','"':'"'}[c];});}
+function h(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&'+'amp;','<':'&'+'lt;','>':'&'+'gt;','"':'&'+'quot;'}[c];});}
 var B=C.brl,N=C.num;
 ev=evs.filter(function(e){return e.id===localStorage.getItem(LAST);})[0]||evs[0];
 if(!ev){ev=C.newEvent('Evento');evs.unshift(ev);save();}
